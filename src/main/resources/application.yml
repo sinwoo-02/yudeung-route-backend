@@ -1,0 +1,41 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: festival
+  profiles:
+    default: dev
+  jackson:
+    deserialization:
+      ACCEPT_SINGLE_VALUE_AS_ARRAY: true
+  jpa:
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+    open-in-view: false
+
+# External APIs
+api:
+  data-portal:
+    service-key: ${DATA_PORTAL_SERVICE_KEY:sample_service_key}
+    base-url: https://apis.data.go.kr
+    path: /5310000/jinjuparking/now
+    sync-enabled: ${DATA_PORTAL_SYNC_ENABLED:true}
+    sync-fixed-rate: 300000 # 5분 간격
+  kakao:
+    rest-api-key: ${KAKAO_REST_API_KEY:sample_kakao_rest_api_key}
+    base-url: https://dapi.kakao.com
+    navi-base-url: https://apis-navi.kakaomobility.com
+
+# Springdoc OpenAPI & Swagger UI
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    display-request-duration: true
+    doc-expansion: none
+    try-it-out-enabled: true

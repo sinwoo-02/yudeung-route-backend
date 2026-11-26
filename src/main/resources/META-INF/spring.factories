@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.jinju.festival.global.config.DotenvApplicationContextInitializer
